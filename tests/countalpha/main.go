@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"unicode"
 )
 
 func main() {
@@ -14,9 +13,16 @@ func main() {
 func CountAlpha(s string) int {
 	count := 0
 	for _, char := range s {
-		if unicode.IsLetter(char) {
+		if IsAlpha(char) {
 			count++
 		}
 	}
 	return count
+}
+
+func IsAlpha(s rune) bool {
+	if (s < 'a' || s > 'z') && (s < '0' || s > '9') && (s < 'A' || s > 'Z') {
+		return false
+	}
+	return true
 }
